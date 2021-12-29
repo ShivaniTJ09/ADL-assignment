@@ -15,7 +15,7 @@ Here are the question 4
 Axioms are included to specify that a part cannot include another part, that a whole object cannot include another whole object, and that each whole is generally associated with a set of given parts.
 A grounded theory that considers also mereological constraints as prior knowledge can be constructed by adding such axioms to 
 
-![image](https://user-images.githubusercontent.com/85010143/147633243-7c7875f1-c3f1-421b-b505-c68b37b1f029.png ;size = 50)
+![image](https://user-images.githubusercontent.com/85010143/147633243-7c7875f1-c3f1-421b-b505-c68b37b1f029.png )<img src="Assets/icon.png" width="200">
 
 defined this more formally 
 
