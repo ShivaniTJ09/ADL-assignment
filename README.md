@@ -4,9 +4,13 @@ Here are the question 4
 
 # Faster LTN
 
-Dataset - http://roozbehm.info/pascal-parts/pascal-parts.html
+## Dataset
 
-# Axioms
+  you can download data from here- http://roozbehm.info/pascal-parts/pascal-parts.html
+- `pascalpart_dataset.tar.gz`: it contains the annotations (e.g., small specific parts are merged into bigger parts) of pascalpart dataset in pascalvoc style. This folder is necessary if you want to train Fast-RCNN (https://github.com/rbgirshick/fast-rcnn) on this dataset for computing the grounding/features vector of each bounding box.
+   
+
+## Axioms
 
 Axioms are included to specify that a part cannot include another part, that a whole object cannot include another whole object, and that each whole is generally associated with a set of given parts.
 A grounded theory that considers also mereological constraints as prior knowledge can be constructed by adding such axioms to 
@@ -37,9 +41,13 @@ this indicate that if an object y is classified as part of x and x is a cat, tha
 
 
 
-# Traning Loss Curve
+## Traning Loss Curve
 
-# Comparison of Faster R-CNN and Faster-LTN 
+
+
+
+
+## Comparison of Faster R-CNN and Faster-LTN 
 
 ![image](https://user-images.githubusercontent.com/85010143/147636084-4e40b6e6-6b9f-4196-9907-dfe8a6b53cac.png)
 
