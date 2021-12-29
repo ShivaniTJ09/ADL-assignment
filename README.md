@@ -52,7 +52,7 @@ this indicate that if an object y is classified as part of x and x is a cat, tha
 ![image](https://user-images.githubusercontent.com/85010143/147636084-4e40b6e6-6b9f-4196-9907-dfe8a6b53cac.png)
 
 
-
+##Other Ground Functions
 
 
 
