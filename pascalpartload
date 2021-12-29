@@ -1,15 +1,16 @@
-import logictensornetworks as ltn
-import tensorflow as tf
+import pandas as pd
 import numpy as np
-import csv, pdb
-import timeit
+from sklearn import metrics
+from sklearn.model_selection import train_test_split
+from sklearn import preprocessing
 
-ltn.default_layers = 2
-ltn.default_smooth_factor = 1e-15
-ltn.default_tnorm = "luk"
-ltn.default_aggregator = "hmean"
-ltn.default_positive_fact_penality = 0.
-ltn.default_clauses_aggregator = "hmean"
+
+fltn.default_layers = 2
+fltn.default_smooth_factor = 1e-15
+fltn.default_tnorm = "luk"
+fltn.default_aggregator = "hmean"
+fltn.default_positive_fact_penality = 0.
+fltn.default_clauses_aggregator = "hmean"
 
 data_training_dir = "data/training/"
 data_testing_dir = "data/testing/"
