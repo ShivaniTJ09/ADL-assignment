@@ -19,14 +19,14 @@ A grounded theory that considers also mereological constraints as prior knowledg
 
 defined this more formally 
 
-![image](https://user-images.githubusercontent.com/85010143/147633326-86d653a7-bbd3-4916-a0e4-461915c98bdb.png)
+ ## ![image](https://user-images.githubusercontent.com/85010143/147633326-86d653a7-bbd3-4916-a0e4-461915c98bdb.png)
 
 1) The first containing only training examples of object types and partof relations (𝑇𝑒𝑥𝑝𝑙)
 
 * Mutual exclusion constraints
   
   
-![image](https://user-images.githubusercontent.com/85010143/147626308-890d5fdb-cfc8-4763-a636-de5bda371f1c.png)
+## ![image](https://user-images.githubusercontent.com/85010143/147626308-890d5fdb-cfc8-4763-a636-de5bda371f1c.png)
 
 Here they have used the Mutual exclusion axiom. we can desribe mutual exclusion is a property of concurrency control, which is instituted for the purpose of preventing race conditions.it can be described into K(K − 1))/2 clauses, corresponding to all unordered class pairs over K classes, e.g., Cat(x) ⇒ ¬Person(x)
 
@@ -35,7 +35,7 @@ The second containing also logical axioms about types and part-of (𝑇𝑝𝑟�
 * Mererological Constraints
 
 
-![image](https://user-images.githubusercontent.com/85010143/147626354-39c31223-51f2-43d7-aa87-fd5bd1d746bf.png)
+## ![image](https://user-images.githubusercontent.com/85010143/147626354-39c31223-51f2-43d7-aa87-fd5bd1d746bf.png)
 
 this indicate that if an object y is classified as part of x and x is a cat, thany can be only an object that we know is a part of the whole cat. Mereological constraints were enforced exploiting the KB developement, to which the reader is referred for further information.
 
