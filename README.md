@@ -39,7 +39,7 @@ The second containing also logical axioms about types and part-of (𝑇𝑝𝑟�
 this indicate that if an object y is classified as part of x and x is a cat, thany can be only an object that we know is a part of the whole cat. Mereological constraints were enforced exploiting the KB developement, to which the reader is referred for further information.
 
 
-## Traniig Loss Curve
+## Training Loss Curve
 
 ![image](https://user-images.githubusercontent.com/85010143/147723557-988bbd64-070d-47a6-b043-7a8db6680714.png)
 
