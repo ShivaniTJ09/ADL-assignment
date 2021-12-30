@@ -13,8 +13,8 @@ matplotlib.rcParams['legend.fontsize'] = 18
 np.set_printoptions(precision=2)
 np.set_printoptions(threshold=np.inf)
 
-# swith between GPU and CPU
-config = tf.ConfigProto(device_count={'GPU':1})
+
+config = ConfigProto(device_count={'GPU':1})
 
 thresholds = np.arange(.00,1.1,.05)
 models_dir = "models/"
@@ -33,7 +33,7 @@ for error in errors_percentage:
         labels_of_models.append("KB_" + constraints + "_" +str(error))
 
 # loading test data
-test_data, pairs_of_test_data, types_of_test_data, partOF_of_pairs_of_test_data, pairs_of_bb_idxs_test, pics = get_data("test", max_rows=50000)
+test_data, pairs_of_test_data, types_of_test_data, partOF_of_pairs_of_test_data, pairs_of_bb_idxs_test, pics = get_data("test", max_rows=5000)
 
 # generating and printing some report on the test data
 number_of_test_data_per_type = Counter(types_of_test_data)
@@ -74,7 +74,7 @@ def plot_prec_rec_curve(precisionW, recallW, precisionWO, recallWO, precisionB, 
 
     fig = plt.figure(figsize=(10.0, 8.0))
 
-    label_baseline_legend='FRCNN'
+    label_baseline_legend='FLTN'
     if 'part-of' in label:
         recallB = [0.0, recallB[0]]
         precisionB = [precisionB[0], precisionB[0]]
@@ -88,8 +88,8 @@ def plot_prec_rec_curve(precisionW, recallW, precisionWO, recallWO, precisionB, 
     aucWO = np.trapz(np.array(precisionWO)[idx_recallWO], x=np.array(recallWO)[idx_recallWO])
     aucB = np.trapz(np.array(precisionB)[idx_recallB], x=np.array(recallB)[idx_recallB])
 
-    plt.plot(recallW, precisionW, lw=3, color='blue', label='LTN_prior: AUC={0:0.3f}'.format(aucW))
-    plt.plot(recallWO, precisionWO, lw=3, color='green', label='LTN_expl: AUC={0:0.3f}'.format(aucWO))
+    plt.plot(recallW, precisionW, lw=3, color='blue', label='FLTN_prior: AUC={0:0.3f}'.format(aucW))
+    plt.plot(recallWO, precisionWO, lw=3, color='green', label='FLTN_expl: AUC={0:0.3f}'.format(aucWO))
     plt.plot(recallB, precisionB, lw=3, color='red', label=label_baseline_legend +': AUC={0:0.3f}'.format(aucB))
     plt.xlabel('Recall', fontsize=22)
     plt.ylabel('Precision', fontsize=22)
@@ -134,8 +134,8 @@ def confusion_matrix_for_baseline(thresholds,with_partof_axioms=False):
 
 # determining the values of the atoms isOfType[t](bb) and isPartOf(bb1,bb2) for every type t and for every bounding box bb, bb1 and bb2.
 def compute_values_atomic_formulas(path_to_model):
-    predicted_types_values_tensor = tf.concat([isOfType[t].tensor() for t in selected_types], 1)
-    predicted_partOf_value_tensor = ltn.Literal(True,isPartOf,pairs_of_objects).tensor
+    predicted_types_values_tensor = np.concat([isOfType[t].tensor() for t in selected_types], 1)
+    predicted_partOf_value_tensor = fltn.Literal(True,isPartOf,pairs_of_objects).tensor
     saver = tf.train.Saver()
     sess = tf.Session(config=config)
     saver.restore(sess, path_to_model)
@@ -214,12 +214,12 @@ with open(os.path.join(results_dir,"report.csv"), "w") as report:
     for t in selected_types:
         writer.writerow([t, number_of_test_data_per_type[t]] + [measure_per_type[measure][mod][th][0,np.where(selected_types == t)[0][0]] for th in thresholds for measure in measures for mod in paths_to_models])
 
-ltn_performance_pof_w = []
-ltn_performance_pof_wo = []
-ltn_performance_pof_b = []
-ltn_performance_types_w = []
-ltn_performance_types_wo = []
-ltn_performance_types_b = []
+fltn_performance_pof_w = []
+fltn_performance_pof_wo = []
+fltn_performance_pof_b = []
+fltn_performance_types_w = []
+fltn_performance_types_wo = []
+fltn_performance_types_b = []
 
 def adjust_prec(precision):
     prec = precision
@@ -254,11 +254,11 @@ for error in errors_percentage:
 
     plot_prec_rec_curve(precisionW, recallW, precisionWO, recallWO, precisionB_pof, recallB_pof, str(int(error*100)) + '_part-of')
 
-    ltn_performance_pof_w.append(np.trapz(np.array(precisionW)[idx_recallW], x=np.array(recallW)[idx_recallW]))
-    ltn_performance_pof_wo.append(np.trapz(np.array(precisionWO)[idx_recallWO], x=np.array(recallWO)[idx_recallWO]))
+    fltn_performance_pof_w.append(np.trapz(np.array(precisionW)[idx_recallW], x=np.array(recallW)[idx_recallW]))
+    fltn_performance_pof_wo.append(np.trapz(np.array(precisionWO)[idx_recallWO], x=np.array(recallWO)[idx_recallWO]))
     recallB = [0.0, recallB_pof[0]]
     precisionB = [precisionB_pof[0], precisionB_pof[0]]
-    ltn_performance_pof_b.append(np.trapz(np.array(precisionB), x=np.array(recallB)))
+    fltn_performance_pof_b.append(np.trapz(np.array(precisionB), x=np.array(recallB)))
 
     for t in selected_types:
         index_type = np.where(selected_types == t)[0][0]
@@ -299,7 +299,4 @@ for error in errors_percentage:
 
 plot_recovery_chart(errors_percentage, ltn_performance_pof_w, ltn_performance_pof_wo, ltn_performance_pof_b,'part-of')
 plot_recovery_chart(errors_percentage, ltn_performance_types_w, ltn_performance_types_wo, ltn_performance_types_b, 'types')
-© 2021 GitHub, Inc.
-Terms
-Privacy
-Security
+
