@@ -44,7 +44,7 @@ this indicate that if an object y is classified as part of x and x is a cat, tha
 ![image](https://user-images.githubusercontent.com/85010143/147723557-988bbd64-070d-47a6-b043-7a8db6680714.png)
 
 
-## Comparison of Faster R-CNN and Faster-LTN 
+## Comparison of Faster-CNN and Faster-LTN 
 
 ![image](https://user-images.githubusercontent.com/85010143/147636084-4e40b6e6-6b9f-4196-9907-dfe8a6b53cac.png)
 
