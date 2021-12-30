@@ -293,10 +293,10 @@ for error in errors_percentage:
                         np.mean(prec_types_wo, axis=0), np.mean(rec_types_wo, axis=0),
                         np.mean(prec_types_b, axis=0), np.mean(rec_types_b, axis=0), str(int(error * 100)) + "_types")
 
-    ltn_performance_types_w.append(np.mean(ap_types_w))
-    ltn_performance_types_wo.append(np.mean(ap_types_wo))
-    ltn_performance_types_b.append(np.mean(ap_types_b))
+    fltn_performance_types_w.append(np.mean(ap_types_w))
+    fltn_performance_types_wo.append(np.mean(ap_types_wo))
+    fltn_performance_types_b.append(np.mean(ap_types_b))
 
-plot_recovery_chart(errors_percentage, ltn_performance_pof_w, ltn_performance_pof_wo, ltn_performance_pof_b,'part-of')
-plot_recovery_chart(errors_percentage, ltn_performance_types_w, ltn_performance_types_wo, ltn_performance_types_b, 'types')
+plot_recovery_chart(errors_percentage, fltn_performance_pof_w, fltn_performance_pof_wo, fltn_performance_pof_b,'part-of')
+plot_recovery_chart(errors_percentage, fltn_performance_types_w, fltn_performance_types_wo, fltn_performance_types_b, 'types')
 
